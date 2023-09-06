@@ -2,6 +2,7 @@
 import CarList from "@/components/CarList.vue";
 import CarTable from "@/components/CarTable.vue";
 import CarsNav from "@/components/CarsNav.vue"; 
+import Navbar from "./components/layouts/Navbar.vue";
 
 
 const cars = [
@@ -65,6 +66,7 @@ const cars = [
 </script>
 
 <template>
+  <Navbar />
   <CarsNav :cars="cars" />
   <CarList :cars="cars" />
   <CarTable :cars="cars" />
