@@ -53,36 +53,4 @@ function changeColor(color) {
 </template>
 
 <style >
-#app {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  height: 100%;
-}
-
-.cars {
-  height: 600px;
-  width: 500px;
-  margin-bottom: 30px;
-}
-
-#content{
-  margin-top: 20px;
-}
-
-body {
-  text-align: center;
-}
-
-img{
-  width: 500px;
-  height: 300px;
-}
-
-.p-chip {
-    display: inline-flex;
-    align-items: center;
-    margin-left: 10px;
-}
 </style>
