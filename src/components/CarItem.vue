@@ -1,56 +1,44 @@
 <script setup>
-import{defineProps, computed} from 'vue'
+import { defineProps, computed } from 'vue'
 import Card from 'primevue/card'
 import Chip from 'primevue/chip'
 
-const props = defineProps({
-  car: {
+defineProps({
+  auto: {
     type: Object,
-     required: true,
+    required: true,
   },
 })
-    
-const carRemake = computed(() => { //позволяет менять объект
-  return{
-    ...props.car,
-    price: props.car.price + ' $',
-    kpd: "тут будет что-то",
-  }
-})
+
 
 function changeColor(color) {
-  const crappyColors = ["#FF0000", "#0000FF"];
-
-  if(crappyColors.includes(color)) {
+  const crappyColors = ['#FF0000', '#00FF00', '#0000FF']
+  if (crappyColors.includes(color)) {
     return true
   }
-    return false
-  }
+  return false
+}
 </script>
 
 <template>
-  <div class="cont">
-    <Card class="cars">
-      <template #header>
-        <img :src="carRemake.image" alt="car" class="car-image" />
-      </template>
-      <template #title></template>
-      <template #content>
-        <p>Цена: {{ carRemake.price }}</p>
-        <p>Год выпуска: {{ carRemake.year }}</p>
-        <p>Объем двигателя: {{ carRemake.volume }}</p>
-        <p>Цвет: {{carRemake.color}}</p>
-      </template>
-      <template #footer>
-        <div class="chipes">
-          <Chip v-if="Number(carRemake.price.slice(0, -1)) > 1000000" label="Дорогой" icon="pi pi-dollar"/>         
-          <Chip v-if="Number(carRemake.price.year) < 1960" label="Cтарый" icon="pi-circle-fill"></Chip>
-          <Chip v-if="changeColor(carRemake.color)" label="Конченный цвет" icon="pi pi-eye-slash"></Chip> 
-        </div>
-      </template>
-    </Card>
-  </div>
+  <Card>
+    <template #header>
+      <img alt="car" class="car-image" />
+    </template>
+    <template #title> {{ auto.brand }} </template>
+    <template #content>
+      <p>Цена: {{ auto.price }}</p>
+      <p>Год выпуска: {{ auto.year }}</p>
+      <p>Объем двигателя: {{ auto.volume }}</p>
+      <p :style="`color: ${auto.color}`">Цвет: {{ auto.color }}</p>
+    </template>
+    <template #footer>
+      <Chip v-if="Number(auto.price.slice(0, -1)) > 1000000" label="Дорогой" icon="pi pi-apple" />
+      <Chip icon="pi pi-history" label="Старый" v-else-if="Number(auto.year) <= 1960" />
+      <Chip icon="pi pi-briefcase" label="Скучный" v-else />
+      <Chip icon="pi pi-eye-slash" label="Конченный цвет" v-if="changeColor(auto.color)" />
+    </template>
+  </Card>
 </template>
 
-<style >
-</style>
+<style scoped></style>

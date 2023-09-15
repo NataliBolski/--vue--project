@@ -1,6 +1,8 @@
 <template>
     <div class="card relative z-2">
-        <Menubar :model="items" />
+        <div class="menu">
+            <Menubar class="menubar" :model="items" />
+        </div>
     </div>
 </template>
 
@@ -8,107 +10,60 @@
 import { ref } from "vue";
 import Menubar from 'primevue/menubar';
 
+const visible = ref(false)
+const toggleVisible = () => {
+  visible.value = !visible.value
+}
+
 const items = ref([
     {
-        label: 'File',
+        label: 'Главная',
+        icon: 'pi pi-car',
+    },
+    {
+        label: 'Машины',
         icon: 'pi pi-fw pi-file',
         items: [
             {
-                label: 'New',
+                label: 'Добавить',
                 icon: 'pi pi-fw pi-plus',
-                items: [
-                    {
-                        label: 'Bookmark',
-                        icon: 'pi pi-fw pi-bookmark'
-                    },
-                    {
-                        label: 'Video',
-                        icon: 'pi pi-fw pi-video'
-                    }
-                ]
             },
             {
-                label: 'Delete',
-                icon: 'pi pi-fw pi-trash'
+                label: 'Мои машины',
+                icon: 'pi pi-sun',
+            },
+            {
+                label: 'Избранное',
+                icon: 'pi pi-star'
             },
             {
                 separator: true
             },
-            {
-                label: 'Export',
-                icon: 'pi pi-fw pi-external-link'
-            }
         ]
     },
 
     {
-        label: 'Users',
+        label: 'Мои данные',
         icon: 'pi pi-fw pi-user',
         items: [
             {
-                label: 'New',
+                label: 'Добавить пользователя',
                 icon: 'pi pi-fw pi-user-plus'
             },
             {
-                label: 'Delete',
+                label: 'Выйти',
                 icon: 'pi pi-fw pi-user-minus'
             },
-            {
-                label: 'Search',
-                icon: 'pi pi-fw pi-users',
-                items: [
-                    {
-                        label: 'Filter',
-                        icon: 'pi pi-fw pi-filter',
-                        items: [
-                            {
-                                label: 'Print',
-                                icon: 'pi pi-fw pi-print'
-                            }
-                        ]
-                    },
-                    {
-                        icon: 'pi pi-fw pi-bars',
-                        label: 'List'
-                    }
-                ]
-            }
         ]
     },
     {
-        label: 'Events',
-        icon: 'pi pi-fw pi-calendar',
-        items: [
-            {
-                label: 'Edit',
-                icon: 'pi pi-fw pi-pencil',
-                items: [
-                    {
-                        label: 'Save',
-                        icon: 'pi pi-fw pi-calendar-plus'
-                    },
-                    {
-                        label: 'Delete',
-                        icon: 'pi pi-fw pi-calendar-minus'
-                    }
-                ]
-            },
-            {
-                label: 'Archieve',
-                icon: 'pi pi-fw pi-calendar-times',
-                items: [
-                    {
-                        label: 'Remove',
-                        icon: 'pi pi-fw pi-calendar-minus'
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        label: 'Quit',
-        icon: 'pi pi-fw pi-power-off'
+        label: 'Чат',
+        icon: 'pi pi-whatsapp'
     }
 ]);
 
 </script>
+
+<style> 
+
+</style>

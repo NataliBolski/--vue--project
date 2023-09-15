@@ -5,7 +5,6 @@ import CarAddModal from "@/components/CarAddModal.vue";
 import CarsNavbar from "@/components/CarsNavbar.vue";
 import {ref} from 'vue'; 
 
-
 const auto = ref({
     id: '',
     brand: '',
@@ -26,6 +25,9 @@ const auto = ref({
   <CarsNavbar /> 
   <CarAddModal />
   <CarTable /> 
+  <CarList />
 </template>
 
+<style scoped> 
+</style>
 

@@ -1,88 +1,85 @@
-<template> 
-  <Button icon="pi pi-plus" @click="toggleVisible" /> 
-  <Dialog v-model:visible="visible" modal header="Выставить автомобиль" :style="{width: '50vw'}"> 
-      <template #default> 
-          <div class="p-fluid"> 
-            <div class="p-field"> 
-              <label for="brand">Бренд</label> 
-              <Dropdown id="brand" v-model="newAuto.brand" editable :options="brandLabel" option-label="brand" option-value="brand" placeholder="Бренд" /> 
-            </div> 
-            <div class="p-field"> 
-              <label for="price">Цена</label> 
-              <InputNumber id="price" v-model="newAuto.price" mode="currency" currency="KZT" locale="ru-ru" /> 
-            </div> 
-            <div class="p-field"> 
-              <label for="year">Год</label> 
-              <Calendar id="year" v-model="newAuto.year" view="year" dateFormat="yy" /> 
-            </div> 
-            <div class="p-field"> 
-              <label for="volume">Объем</label> 
-              <InputNumber id="volume" v-model="newAuto.volume" inputId="minmax" :min="1.1" :max="8.4" /> 
-            </div> 
-            <div class="p-field"> 
-              <label for="color">Цвет</label> 
-              <ColorPicker id="color" v-model="newAuto.color"  /> 
-            </div> 
-            <div class="p-field"> 
-              <label for="city">Город</label> 
-              <Dropdown id="city" v-model="newAuto.city" editable :options="cities" option-label="city" option-value="city" placeholder="Город" /> 
-            </div> 
-            <div class="p-field"> 
-              <label for="carcase">Кузов</label> 
-              <Dropdown id="carcase" v-model="newAuto.carcase" editable :options="carcases" option-label="carcase" option-value="carcase" placeholder="Кузов" /> 
-            </div> 
-             
-              <div class="flex flex-wrap gap-3"> 
-                  <div class="p-field"> 
-                      <label for="gear">Коробка</label> 
-                  <div class="flex align-items-center"> 
-                      <RadioButton id="gear" v-model="newAuto.gear" inputId="gears1" name="gears" value="Механическая"/> 
-                      <label for="gears1" class="ml-2">Механическая</label> 
-                  </div> 
-                  <div class="flex align-items-center"> 
-                      <RadioButton id="gear" v-model="newAuto.gear" inputId="gears2" name="gears" value="Автоматическая "/>  
-                      <label for="gears2" class="ml-2">Автоматическая</label> 
-                  </div> 
-            </div> 
-            <div class="p-field"> 
-               
-              <label for="travel">Пробег</label> 
-              <InputText id="travel" v-model="newAuto.travel" /> 
-              <Slider v-model="newAuto.travel" /> 
-              </div> 
-              </div> 
-          </div> 
-        </template> 
-     
-      <template #footer> 
-          <Button label="Сбросить" icon="pi pi-times" @click="clearAuto" text /> 
-          <Button label="Добавить" icon="pi pi-check"  @click="addAuto" autofocus /> 
-      </template> 
-  </Dialog> 
-</template> 
+<template>
+  <div class="addBtn">
+    <Button style="margin-top: 5px" label="Добавить машину" @click="toggleVisible" />
+  </div>
+  <Dialog class="dialog" v-model:visible="visible" modal header="Выставить автомобиль" :style="`width: '50vw'; color:green;`">
+    <template #default>
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="brand"></label>
+          <Dropdown style="margin-top: 10px; margin-bottom:10px" id="brand" v-model="newAuto.brand" editable :options="brandLabel" option-label="brand" option-value="brand" placeholder="Бренд" />
+        </div>
+        <div class="p-field">
+          <label for="price">Цена:</label>
+          <InputNumber style="margin-top: 10px; margin-bottom:10px" id="price" v-model="newAuto.price" mode="currency" currency="KZT" locale="ru-ru" />
+        </div>
+        <div class="p-field">
+          <label for="year">Год:</label>
+          <Calendar style="margin-top: 10px; margin-bottom:10px" id="year" v-model="newAuto.year" view="year" dateFormat="yy" />
+        </div>
+        <div class="p-field">
+          <label for="volume">Объем двигателя:</label>
+          <InputNumber style="margin-top: 10px; margin-bottom:10px" id="volume" v-model="newAuto.volume" />
+        </div>
+        <div class="p-field">
+          <label for="color">Цвет:</label>
+          <ColorPicker style="margin-top: 10px; margin-bottom:10px; margin-left: 14px; width:90%" id="color" v-model="newAuto.color" />
+        </div>
+        <div class="p-field">
+          <label for="city"></label>
+          <Dropdown style="margin-top: 10px; margin-bottom:10px" id="city" v-model="newAuto.city" editable :options="cityLabel" option-label="city" option-value="city" placeholder="Город" />
+        </div>
+        <div class="p-field">
+          <label for="carcase"></label>
+          <Dropdown id="carcase" v-model="newAuto.carcase" editable :options="carcaseLabel" option-label="carcase" option-value="carcase" placeholder="Кузов" />
+        </div>
+        <div class="p-field" id="corobka">
+          <label for="gear"></label>
+          <div style="margin: 20px; margin-left: 25px" id="gear" v-for="(gear, index) in gearLabel">
+            <label :for="index">{{ gear }}</label>
+            <RadioButton class="radio" :key="gear" v-model="newAuto.gear" :value="gear" :inputId="gear" :name="gear" :id="index" />
+          </div>
+        </div>
+        <div class="p-field">
+          <label for="travel">Пробег</label>
+          <Slider style="margin-top: 20px; margin-bottom:10px"  v-model="newAuto.travel" :min="0" :max="500000" :step="1000" />
+        </div>
+        <!-- <div class="p-field">
+          <label for="photo">Картинка</label>
+            <FileUpload id="photo" v-model="newAuto.image" mode="basic" accept="image/*" maxFileSize="1000000" @select="onUpload" />
+        </div> -->
+      </div>
+    </template>
+    <template #footer>
+      <Button label="Сбросить" icon="pi pi-times" @click="clearAuto" text />
+      <Button label="Добавить" icon="pi pi-check" @click="addAuto" autofocus />
+    </template>
+  </Dialog>
+</template>
 
-<script setup> 
-import {ref} from 'vue' 
-import Dialog from 'primevue/dialog'; 
-import Button from 'primevue/button'; 
-import Dropdown from 'primevue/dropdown'; 
-import InputNumber from 'primevue/inputnumber'; 
-import Calendar from 'primevue/calendar'; 
-import ColorPicker from 'primevue/colorpicker'; 
-import RadioButton from 'primevue/radiobutton'; 
-import Slider from 'primevue/slider'; 
-import InputText from 'primevue/inputtext'; 
-import { useAuto } from "@/composable/useAuto" ;
+<script setup>
+import { ref } from 'vue'
+import Dialog from 'primevue/dialog'
+import Button from 'primevue/button'
+import Dropdown from 'primevue/dropdown'
+import InputNumber from 'primevue/inputnumber'
+import Calendar from 'primevue/calendar'
+import ColorPicker from 'primevue/colorpicker'
+import RadioButton from 'primevue/radiobutton'
+import Slider from 'primevue/slider'
+import { useAuto } from '@/composable/useAuto'
+import FileUpload from 'primevue/fileupload';
 
-const { newAuto, createAuto, loading, clear } = useAuto(); 
-const visible = ref(false);
-const toggleVisible = () =>{ 
-visible.value = !visible.value 
-} 
+const { newAuto, createAuto, loading, clear } = useAuto()
+
+const visible = ref(false)
+const toggleVisible = () => {
+  visible.value = !visible.value
+}
 
 async function addAuto() {
   await createAuto()
-  toggleVisible(); 
+  toggleVisible()
 }
 
 function clearAuto() {
@@ -90,58 +87,86 @@ function clearAuto() {
   toggleVisible()
 }
 
-const brandLabel = [ 
-  { brand: 'BMW' }, 
-  { brand: 'Audi' }, 
-  { brand: 'Mercedes' }, 
-  { brand: 'Volkswagen' }, 
-  { brand: 'Volvo' }, 
-  { brand: 'Toyota' }, 
-  { brand: 'Nissan' }, 
-  { brand: 'Mazda' }, 
-  { brand: 'Honda' },
-  { brand: 'Hyundai' }, 
-  { brand: 'Kia' }, 
-  { brand: 'Lexus' }, 
-  { brand: 'Ford' }, 
-  { brand: 'Chevrolet' }, 
-  { brand: 'Skoda' }, 
-  { brand: 'Renault' }, 
-  { brand: 'Peugeot' }, 
-] 
+const gearLabel = ['Механика ', 'Автомат ', 'Робот ', 'Вариатор ']
 
-const cities = [ 
-  { city: 'Алматы' }, 
-  { city: 'Aстана' }, 
-  { city: 'Мосва' }, 
-  { city: 'Питер' }, 
-  { city: 'Шымкент' }, 
-  { city: 'Атырау' }, 
-] 
- 
-const carcases = [ 
-  { carcase: 'Седан' }, 
-    { carcase: 'Купе' }, 
-    { carcase: 'Хэтчбек' }, 
-    { carcase: 'Лифтбек' }, 
-    { carcase: 'Фастбэк' }, 
-    { carcase: 'Универсал' }, 
-    { carcase: 'Кроссовер' }, 
-    { carcase: 'Внедорожник' }, 
-    { carcase: 'Пикап' }, 
-    { carcase: 'Легковой фургон' }, 
-    { carcase: 'Минивэн' }, 
-    { carcase: 'Компактвэн' }, 
-    { carcase: 'Микровэн' }, 
-    { carcase: 'Кабриолет' }, 
-    { carcase: 'Родстер' }, 
-    { carcase: 'Тарга' }, 
-    { carcase: 'Ландо' }, 
-    { carcase: 'Лимузин' }, 
-] 
- 
-</script> 
- 
-<style scoped> 
- 
+const brandLabel = [
+  { brand: 'BMW' },
+  { brand: 'Audi' },
+  { brand: 'Mercedes' },
+  { brand: 'Volkswagen' },
+  { brand: 'Volvo' },
+  { brand: 'Toyota' },
+  { brand: 'Nissan' },
+  { brand: 'Mazda' },
+  { brand: 'Honda' },
+  { brand: 'Hyundai' },
+  { brand: 'Kia' },
+  { brand: 'Lexus' },
+  { brand: 'Ford' },
+  { brand: 'Chevrolet' },
+  { brand: 'Skoda' },
+  { brand: 'Renault' },
+  { brand: 'Peugeot' },
+]
+
+const cityLabel = [
+  { city: 'Алматы' },
+  { city: 'Нур-Султан' },
+  { city: 'Шымкент' },
+  { city: 'Актобе' },
+  { city: 'Атырау' },
+  { city: 'Караганда' },
+  { city: 'Кокшетау' },
+  { city: 'Костанай' },
+  { city: 'Кызылорда' },
+  { city: 'Павлодар' },
+  { city: 'Петропавловск' },
+  { city: 'Семей' },
+  { city: 'Талдыкорган' },
+  { city: 'Тараз' },
+  { city: 'Туркестан' },
+  { city: 'Уральск' },
+  { city: 'Усть-Каменогорск' },
+  { city: 'Шымкент' },
+  { city: 'Экибастуз' },
+  { city: 'Другой' },
+]
+
+const carcaseLabel = [
+  { carcase: 'Седан' },
+  { carcase: 'Хэтчбек' },
+  { carcase: 'Универсал' },
+  { carcase: 'Купе' },
+  { carcase: 'Кабриолет' },
+  { carcase: 'Лифтбек' },
+  { carcase: 'Лимузин' },
+  { carcase: 'Минивэн' },
+  { carcase: 'Пикап' },
+  { carcase: 'Родстер' },
+  { carcase: 'Фастбек' },
+  { carcase: 'Другой' },
+]
+</script>
+
+<style>
+.addBtn {
+ display: flex;
+ justify-content: end;
+ margin-top: -53px;
+ margin-right: 20px;
+ margin-bottom: 20px;
+}
+
+.dialog {
+  width: 600px;
+}
+
+.p-field:nth-child(1) {
+  margin-top: 10px;
+}
+
+#corobka {
+  display: flex;
+} 
+
 </style>

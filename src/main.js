@@ -7,7 +7,7 @@ import router from './router'
 import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css';
 import 'primevue/chip';
-import 'primevue/resources/themes/lara-light-indigo/theme.css'
+import 'primevue/resources/themes/saga-green/theme.css'
 
 const firebaseConfig = {
     apiKey: "AIzaSyABFMXfiKE8CENSmQtMB8pU4qKHu_JcFco",
