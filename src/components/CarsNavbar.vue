@@ -10,11 +10,6 @@
 import { ref } from "vue";
 import Menubar from 'primevue/menubar';
 
-const visible = ref(false)
-const toggleVisible = () => {
-  visible.value = !visible.value
-}
-
 const items = ref([
     {
         label: 'Главная',
