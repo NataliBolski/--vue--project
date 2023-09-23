@@ -48,9 +48,9 @@
           <input id="inputfile" class="input inputfile" name="images" type="file" accept=".jpg, .png" @input="onUpload($event)" />
           <label for="inputfile" class="inputfile-button">
             <span class="input__file-icon-wrapper">
-              <img class="input__file-icon" src="@/assets/uploadImage.png" alt="Выбрать файл" width="25" />
+              <img class="input__file-icon" src="@/assets/addCarIcon.jpeg" alt="Выбрать файл" width="25" />
             </span>
-            <span class="input__file-button-text">Машинка</span>
+            <span class="input__file-button-text">Загрузить фотографию</span>
           </label>
         </form>
       </div>
@@ -73,7 +73,6 @@ import ColorPicker from 'primevue/colorpicker'
 import RadioButton from 'primevue/radiobutton'
 import Slider from 'primevue/slider'
 import { useAuto } from '@/composable/useAuto'
-import FileUpload from 'primevue/fileupload';
 
 async function onUpload(e) {
     const image = e.target.files[0]
@@ -109,12 +108,12 @@ const brandLabel = [
   { brand: 'Mazda' },
   { brand: 'Honda' },
   { brand: 'Hyundai' },
+  { brand: 'Mitsubishi' },
   { brand: 'Kia' },
   { brand: 'Lexus' },
   { brand: 'Ford' },
   { brand: 'Chevrolet' },
   { brand: 'Skoda' },
-  { brand: 'Renault' },
   { brand: 'Peugeot' },
 ]
 
@@ -163,7 +162,7 @@ const carcaseLabel = [
 .addBtn {
  display: flex;
  justify-content: end;
- margin-top: -53px;
+ margin-top: -48px;
  margin-right: 20px;
  margin-bottom: 20px;
 }
@@ -179,5 +178,26 @@ const carcaseLabel = [
 #corobka {
   display: flex;
 } 
+
+#inputfile{
+  display: none;
+}
+
+.input__file-icon {
+  width: 55px;
+  height: 55px;
+  margin-top: 10px;
+}
+
+.input__file-icon-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.input__file-button-text{
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
 
 </style>

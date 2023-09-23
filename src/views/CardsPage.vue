@@ -1,7 +1,7 @@
 <template>
     <CarList />
-</template>
-
-<script setup>
-import CarList from "@/components/CarList.vue";
-</script>
+  </template>
+  
+  <script setup>
+  import CarList from '@/components/CarList.vue'
+  </script>

@@ -21,3 +21,8 @@ function goToCarUrl(id) {
     <CarItem :auto="auto" @click="goToCarUrl(auto.id)" />
   </section>
 </template>
+
+<style>
+
+
+</style>

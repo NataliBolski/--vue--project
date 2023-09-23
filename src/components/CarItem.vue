@@ -21,16 +21,19 @@ function changeColor(color) {
 </script>
 
 <template>
+  <div class="carsTable">
   <Card class="card">
     <template #header>
       <img class="car-image" :src="auto.image">
     </template>
     <template #title> {{ auto.brand }} </template>
-    <template #content>
+    <template class="content" #content>
       <p>Цена: {{ auto.price }}</p>
       <p>Год выпуска: {{ auto.year }}</p>
       <p>Объем двигателя: {{ auto.volume }}</p>
-      <p :style="`color: ${auto.color}`">Цвет: {{ auto.color }}</p>
+      <p>Город: {{ auto.city }}</p>
+      <p>Кузов: {{ auto.carcase }}</p>
+      <p>Пробег: {{ auto.travel }}</p>
     </template>
     <template #footer>
       <Chip v-if="Number(auto.price.slice(0, -1)) > 1000000" label="Дорогой" icon="pi pi-apple" />
@@ -39,13 +42,31 @@ function changeColor(color) {
       <Chip icon="pi pi-eye-slash" label="Конченный цвет" v-if="changeColor(auto.color)" />
     </template>
   </Card>
+</div>
 </template>
 
 <style scoped>
 .card {
+  margin-top: 30px;
   margin-bottom: 25px;
   margin-left: 10px;
   margin-right: 10px;
+  height: 500px;
+  width: 900px;
+  text-align: center;
+  display: flex;;
+}
+.card img {
+height: 350px;
+width:550px;
+margin-bottom: 20px;
+margin-right: 30px;
+}
+
+.carsTable {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f9fa
 }
 
 </style>

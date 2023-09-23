@@ -1,7 +1,7 @@
 <template>
     <div class="card relative z-2">
         <div class="menu">
-            <Menubar class="menubar" :model="items" />
+            <Menubar class="menubar" :model="items"/>
         </div>
     </div>
 </template>
@@ -9,11 +9,14 @@
 <script setup>
 import { ref } from "vue";
 import Menubar from 'primevue/menubar';
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 const items = ref([
     {
         label: 'Главная',
         icon: 'pi pi-car',
+        to: { name: 'cards' },
     },
     {
         label: 'Машины',
@@ -22,10 +25,12 @@ const items = ref([
             {
                 label: 'Добавить',
                 icon: 'pi pi-fw pi-plus',
+                to: { name: 'add' },
             },
             {
                 label: 'Мои машины',
                 icon: 'pi pi-sun',
+                to: { name: 'table' },
             },
             {
                 label: 'Избранное',
@@ -43,7 +48,8 @@ const items = ref([
         items: [
             {
                 label: 'Добавить пользователя',
-                icon: 'pi pi-fw pi-user-plus'
+                icon: 'pi pi-fw pi-user-plus',
+                to: { name: 'login' },
             },
             {
                 label: 'Выйти',
@@ -51,11 +57,8 @@ const items = ref([
             },
         ]
     },
-    {
-        label: 'Чат',
-        icon: 'pi pi-whatsapp'
-    }
 ]);
+
 
 </script>
 
