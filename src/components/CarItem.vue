@@ -55,6 +55,7 @@ function changeColor(color) {
   width: 900px;
   text-align: center;
   display: flex;;
+  padding-top: 35px;
 }
 .card img {
 height: 350px;

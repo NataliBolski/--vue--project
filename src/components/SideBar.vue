@@ -38,6 +38,8 @@ const visible = ref(false);
     box-sizing: border-box;
 }
 
-
+.p-sidebar-close{
+    display: none;
+}
 
 </style>

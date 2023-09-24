@@ -24,5 +24,4 @@ function goToCarUrl(id) {
 
 <style>
 
-
 </style>
