@@ -1,13 +1,14 @@
 <template>
     <div class="login">
         <button type="button" class="p-link p-ml-auto" @click="googleRegister">
-        <i class="pi pi-user"></i>
+        <i class="pi pi-google"></i>
         <p>Зарегистрироваться через Google</p>
         </button>
     </div>
   </template>
   
   <script setup>
+  import 'primeicons/primeicons.css';
   import Button from 'primevue/button'
   import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
   
@@ -46,5 +47,13 @@
    font-size: 80px;
    margin-bottom: 10px;
 
+}
+
+.pi {
+  transition: transform 0.2s;
+}
+.pi:hover {
+  color: rgb(23, 173, 0);
+  transform: translateY(-5px);
 }
 </style>

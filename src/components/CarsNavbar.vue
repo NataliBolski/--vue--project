@@ -63,5 +63,8 @@ const items = ref([
 </script>
 
 <style> 
-
+.menu{
+    margin-bottom: 20px;
+    
+}
 </style>

@@ -23,5 +23,11 @@ function goToCarUrl(id) {
 </template>
 
 <style>
+.cars {
+  transition: transform 0.2s;
+}
 
+.cars:hover {
+  transform: scale(1.1);
+}
 </style>

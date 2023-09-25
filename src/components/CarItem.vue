@@ -47,7 +47,7 @@ function changeColor(color) {
 
 <style scoped>
 .card {
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 25px;
   margin-left: 10px;
   margin-right: 10px;

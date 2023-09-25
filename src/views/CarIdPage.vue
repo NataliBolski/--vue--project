@@ -57,7 +57,6 @@ await getAuto(route.params.id);
   width: 900px;
   text-align: center;
   display: flex;;
-  padding-top: 35px;
 
 }
 

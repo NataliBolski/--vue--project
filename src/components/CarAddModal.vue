@@ -162,9 +162,9 @@ const carcaseLabel = [
 .addBtn {
  display: flex;
  justify-content: end;
- margin-top: -48px;
+ margin-top: -64px;
  margin-right: 20px;
- margin-bottom: 20px;
+ margin-bottom: 40px;
 }
 
 .dialog {

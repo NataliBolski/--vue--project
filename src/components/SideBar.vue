@@ -12,12 +12,18 @@
           <label for="comment">Ваш отзыв или вопрос</label>
         </span>
         <Button type="submit" label="Отправить" @click="handleSubmit" />
+        <div class="sub">
+        <Button id="btn" type="submit" label="" icon="pi pi-facebook"/>
+        <Button id="btn" type="submit" label="" icon="pi pi-reddit" />
+        <Button id="btn" type="submit" label="" icon="pi pi-twitter" />
+        </div>
       </Sidebar>
     <Button id="reviewBtn" icon="pi pi-plus" @click="visible = true" />
 </div>
 </template>
 
 <script setup>
+import 'primeicons/primeicons.css';
 import Sidebar from 'primevue/sidebar'
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext'
@@ -29,8 +35,9 @@ const visible = ref(false);
 <style>
 #slider{
     text-align: center;
-    margin-top: -58px;
+    margin-top: -72px;
     margin-left: -700px;
+    margin-bottom: 15px;
 }
 .p-component, .p-component  {
     margin-bottom: 5px;
@@ -41,5 +48,19 @@ const visible = ref(false);
 .p-sidebar-close{
     display: none;
 }
+.sub {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  margin-top: 20px;
+}
 
+#btn{
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+#btn:hover{
+  transform: translateY(-5px);
+}
 </style>
